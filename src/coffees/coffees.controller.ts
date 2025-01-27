@@ -41,7 +41,6 @@ export class CoffeesController {
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    console.log(typeof id);
     return this.coffeeService.remove(id);
   }
 }
