@@ -6,7 +6,11 @@ import { CoffeesModule } from './coffees/coffees.module';
 import { CommonModule } from './common/common.module';
 
 @Module({
-  imports: [ConfigModule.forRoot({}), CoffeesModule, CommonModule],
+  imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
+    CoffeesModule,
+    CommonModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
