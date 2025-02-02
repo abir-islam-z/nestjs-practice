@@ -17,6 +17,10 @@ async function bootstrap() {
   );
   // nest g filter common/filters/http-exception --flat --no-spec
   app.useGlobalFilters(new HttpExceptionFilter());
+
+  // nest g guard common/guards/auth --flat --no-spec
+  // app.useGlobalGuards(new AuthGuard());
+
   await app.listen(process.env.PORT ?? 3000);
 }
 bootstrap();
