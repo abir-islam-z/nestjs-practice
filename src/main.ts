@@ -15,6 +15,7 @@ async function bootstrap() {
       },
     }),
   );
+  // nest g filter common/filters/http-exception --flat --no-spec
   app.useGlobalFilters(new HttpExceptionFilter());
   await app.listen(process.env.PORT ?? 3000);
 }
