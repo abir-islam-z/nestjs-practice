@@ -1,14 +1,13 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ConfigModule } from '@nestjs/config';
 import { APP_GUARD } from '@nestjs/core';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthGuard } from './guards/auth.guard';
 import { LoggingMiddleware } from './middlewares/logging.middleware';
 
 @Module({
   imports: [
     ConfigModule,
-    TypeOrmModule.forRootAsync({
+    /* TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (config: ConfigService) => ({
         type: config.get('DB_TYPE') as any,
@@ -21,7 +20,7 @@ import { LoggingMiddleware } from './middlewares/logging.middleware';
         synchronize: config.get('DB_SYNCHRONIZE') === 'true',
       }),
       inject: [ConfigService],
-    }),
+    }), */
   ],
   controllers: [],
   providers: [{ provide: APP_GUARD, useClass: AuthGuard }],

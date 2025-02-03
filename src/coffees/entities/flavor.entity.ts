@@ -1,14 +1,14 @@
-import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import mongoose, { Document } from 'mongoose';
 import { Coffee } from './coffee.entity';
 
-@Entity()
-export class Flavor {
-  @PrimaryGeneratedColumn()
-  id: number;
-
-  @Column()
+@Schema()
+export class Flavor extends Document {
+  @Prop()
   name: string;
 
-  @ManyToMany(() => Coffee, (coffee) => coffee.flavors)
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Coffee' })
   coffees: Coffee[];
 }
+
+export const FlavorSchema = SchemaFactory.createForClass(Flavor);
