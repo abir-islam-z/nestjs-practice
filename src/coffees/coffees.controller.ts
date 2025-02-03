@@ -24,7 +24,7 @@ export class CoffeesController {
   @Public()
   @Get('/')
   async findAll(
-    @Protocol() protocol: string,
+    @Protocol('https') protocol: string,
     @Query() paginationQuery: PaginationQueryDto,
   ) {
     console.log(protocol);
